@@ -9,31 +9,54 @@
     <link href="styles/hojaestilosindex.css" rel="stylesheet">
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 </head>
-<body background="ima/fondo.jpg">
+<body id="cuerpo">
 
-    <section style="padding: 0 0 0 8px">
+    <section style="padding: 30px 0 0 8px">
 
         <figure class="d-inline" type = "fotografia">
-            <img src="ima/tableroparte1.png" alt="nuevo" class = "rounded">
+            <img src="ima/tableroparte1.png" alt="nuevo" class = "rounded button">
         </figure>
 
         <figure class="d-inline" type = "fotografia">
-            <img src="ima/tableroparte2.png" alt="nuevo" class = "rounded">
+            <img src="ima/tableroparte2.png" alt="nuevo" class = "rounded button">
         </figure>
 
         <figure class="d-inline" type="fotografia">
-            <img src="ima/tableroparte3.png" alt="nuevo" class = "rounded">
+            <img src="ima/tableroparte3.png" alt="nuevo" class = "rounded button">
         </figure>
 
-        <figure class="d-inline">
-            <img src="ima/tableroparte4.png" alt="nuevo" class = "rounded">
+        <figure class="d-inline" >
+            <img src="ima/tableroparte4.png" alt="nuevo" class = "rounded button" id="imagenforo">
         </figure>
 
     </section>
 
-    <footer>
-        <button class = "btn btn-dark btn-block" style="margin: 10px">Boton</button>
-    </footer>
+    <section class = "popup">
+
+        <article class = "popupcontent">
+
+            <img class="imagenlogin" src="ima/iconoestandarlogin.jpg" alt="user" width="50" height="50">
+            <input class = "inputlogin" type="text" placeholder="nombre de usuario">
+            <input class = "inputlogin" type="password" placeholder="password"><br>
+            <a type = "button" class="btn btn-primary">Log in</a><br>
+            <br><a type = "button" class="btn btn-danger" id="cancelar">Cancelar</a>
+
+        </article>
+
+    </section>
+
+
+<script>
+
+    document.getElementById("imagenforo").addEventListener("click",function () {
+        document.querySelector(".popup").style.display = "flex";
+    })
+
+    document.getElementById("cancelar").addEventListener("click",function () {
+        document.querySelector(".popup").style.display = "none";
+    })
+
+</script>
 
 </body>
 </html>

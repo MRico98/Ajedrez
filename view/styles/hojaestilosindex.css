@@ -13,3 +13,38 @@ figure img{
 figure:hover img{
     transform: scale(1.2);
 }
+
+#cuerpo{
+    background: dimgrey;
+}
+
+.popup{
+    background: rgba(0,0,0,0.6);
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.popupcontent{
+    height: 300px;
+    width: 500px;
+    background: dimgrey;
+    border-radius: 5px;
+}
+
+.imagenlogin{
+    display: block;
+    margin-left: 220px;
+    margin-top: 20px;
+}
+
+.inputlogin{
+    display: block;
+    margin-left: 150px;
+    margin-top: 20px;
+}
