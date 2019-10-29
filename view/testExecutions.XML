@@ -1,14 +1,9 @@
-<testExecutions version="1">
-  <file path="testx/ClassOneTest.xoo">
-    <testCase name="test1" duration="5"/>
-    <testCase name="test2" duration="500">
-      <skipped message="short message">other</skipped>
-    </testCase>
-    <testCase name="test3" duration="100">
-      <failure message="short">stacktrace</failure>
-    </testCase>
-    <testCase name="test4" duration="500">
-      <error message="short">stacktrace</error>
-    </testCase>
+<coverage version="1">
+  <file path="xources/hello/NoConditions.xoo">
+    <lineToCover lineNumber="6" covered="true"/>
+    <lineToCover lineNumber="7" covered="false"/>
   </file>
-</testExecutions>
+  <file path="xources/hello/WithConditions.xoo">
+    <lineToCover lineNumber="3" covered="true" branchesToCover="2" coveredBranches="1"/>
+  </file>
+</coverage>
