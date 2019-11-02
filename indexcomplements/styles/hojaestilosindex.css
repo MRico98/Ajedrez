@@ -1,0 +1,50 @@
+figure[type = "fotografia"]{
+    margin: 0px 10px 0px 0px;
+}
+
+figure{
+    overflow: hidden;
+}
+
+figure img{
+    transition: all 1.2s ease;
+}
+
+figure:hover img{
+    transform: scale(1.2);
+}
+
+#cuerpo{
+    background: dimgrey;
+}
+
+.popup{
+    background: rgba(0,0,0,0.6);
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.popupcontent{
+    height: 300px;
+    width: 500px;
+    background: dimgrey;
+    border-radius: 5px;
+}
+
+.imagenlogin{
+    display: block;
+    margin-left: 220px;
+    margin-top: 20px;
+}
+
+.inputlogin{
+    display: block;
+    margin-left: 150px;
+    margin-top: 20px;
+}
