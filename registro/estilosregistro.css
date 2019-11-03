@@ -2,6 +2,10 @@ body{
     background: slategrey;
 }
 
+textarea{
+    border-radius: 25px;
+}
+
 #cabeceraprincipal{
     background: dimgrey;
     padding-top: 20px;
@@ -29,6 +33,19 @@ body{
     height: 75vh;
 }
 
+.detallesusuario{
+    display: inline-block;
+    width: 400px;
+    padding-left: 70px;
+}
+
 .labelinputs{
     margin-top: 20px;
+}
+
+.botonessubmit{
+    display: inline-block;
+    float: right;
+    padding-right: 160px;
+    padding-top: 160px;
 }

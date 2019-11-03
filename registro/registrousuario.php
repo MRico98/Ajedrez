@@ -5,10 +5,11 @@
     <meta charset="UTF-8">
     <meta title="Description" content="Pagina para el registro de nuevos usuarios">
     <meta title="keywords" content="usuarios,ajedrez,registros">
+    <meta name="viewport" content="width=device-width, initial-scale 1">
     <title>Ingresar nuevo usuario</title>
     <link rel="shorcut icon" href="../indexcomplements/ima/icono.ico">
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <link href="estilosregistros.css" rel="stylesheet">
+    <link href="estilosregistro.css" rel="stylesheet">
 </head>
 
 <body>
@@ -42,7 +43,8 @@
             <input type="number" class="form-control" id="celular">
         </article>
 
-        <article class="form-group cuerporegistro">
+
+        <article class="form-group detallesusuario">
             <picture>
                 <img src="../indexcomplements/ima/iconoestandarlogin.jpg" width="96" sizes="100" alt="Imagen de usuario">
             </picture>
@@ -54,7 +56,15 @@
             <input type="password" class="form-control" id="contrasenia">
             <label class="labelinputs" for="repetircontrasenia">Repita al contraseña</label>
             <input type="password" class="form-control" id="repetircontrasenia">
+            <label class="labelinputs" for="descripcionusuario">Descripción:</label>
+            <br>
+            <textarea id="descripcionusuario" rows="3" cols="60"></textarea>
         </article>
+
+         <article class="botonessubmit">
+             <button type="submit" class="btn btn-lg btn-primary">Registrar</button><br><br>
+             <button type="cancelar" class="btn btn-lg btn-danger">Cancelar</button>
+         </article>
 
         </form>
     </section>
