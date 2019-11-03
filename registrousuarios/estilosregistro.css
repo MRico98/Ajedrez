@@ -1,0 +1,19 @@
+#cabeceraprincipal{
+    background: dimgrey;
+    padding-top: 20px;
+    height: 150px;
+}
+
+#tituloprincipal{
+    padding-left: 110px;
+    padding-top: 20px;
+}
+
+#cuerpoprincipal{
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    background: darkgrey;
+    width: 1270px;
+    height: 70vh;
+}
