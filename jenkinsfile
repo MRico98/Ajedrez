@@ -2,19 +2,24 @@ pipeline {
     agent any
 
     stages {
-        stage('Build') {
+        stage('Obtencion de codigo fuente en repositorio') {
             steps {
-                echo 'Building..'
+                git 'https://github.com/MRico98/Ajedrez.git'
             }
         }
-        stage('Test') {
+
+        stage('Analisis') {
             steps {
-                echo 'Testing..'
+                    def scannerhome = tool 'Sonar-scanner.4';
+                        withSonarQubeEnv('SonarQube_7.8'){
+                            bat label: '' ,script: "${scannerhome}/bin/sonar-scanner -D sonar.projectKey=ProyectoWeb -D sonar.projectName=ProyectoWeb -D sonar.projectVersion=1.0 -D sonar.sourceEncoding=UTF-8"
+                }
             }
         }
+
         stage('Deploy') {
             steps {
-                echo 'Deploying....'
+                bat label: '', script: "xcopy "C:\Jenkins\workspace\Ajedrez" "C:\Apache24\htdocs" /E /Y"
             }
         }
     }
