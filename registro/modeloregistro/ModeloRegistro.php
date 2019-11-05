@@ -5,8 +5,8 @@ include ("Usuario.php");
 class ModeloRegistro
 {
     private $servidor = "69.46.5.165:85";
-    private $nombreusuario = "Administrador";
-    private $contrasenia = "Proyecto2019";
+    private $nombreusuario = "root";
+    private $contrasenia = "admin";
     private $basededatos = "ajedrez";
     private $conn;
     private $usuarioaregistrar;
@@ -41,30 +41,31 @@ class ModeloRegistro
     }
 
     public function setEmailUsuario($email){
-        $consulta = "SELECT ajedrez.email FROM usuario WHERE email LIKE $email";
-        if($consulta>0){
+        $consulta = 'SELECT email FROM ajedrez.usuario WHERE email LIKE "'.$email.'"';
+        $resultado = $this->conn->query($consulta);
+        if($resultado->num_rows>0){
             throw new Exception("Esta cuenta de Email ya esta registrada");
         }
         $this->usuarioaregistrar->setEmail($email);
     }
 
     public function setCelularUsuario($celular){
-
         if($celular == null){
             $this->usuarioaregistrar->setCelular(0);
             return;
         }
-
-        $consulta = "SELECT ajedrez.celular FROM usuario WHERE celulcar LIKE $celular";
-        if($consulta>0){
+        $consulta = 'SELECT celular FROM ajedrez.usuario WHERE celular LIKE "'.$celular.'"';
+        $resultado = $this->conn->query($consulta);
+        if($resultado->num_rows>0){
             throw new Exception("Esta numero de telefono ya existe");
         }
         $this->usuarioaregistrar->setCelular($celular);
     }
 
     public function setNickname($nickname){
-        $consulta = "SELECT ajedrez.nombreusuario FROM usuario WHERE nombreusuario LIKE $nickname";
-        if($consulta>0){
+        $consulta = 'SELECT nombreusuario FROM ajedrez.usuario WHERE nombreusuario LIKE "'.$nickname.'"';
+        $resultado = $this->conn->query($consulta);
+        if($resultado->num_rows>0){
             throw new Exception("Este nickname ya existe");
         }
         $this->usuarioaregistrar->setNombreusuario($nickname);
@@ -90,26 +91,6 @@ class ModeloRegistro
 
     public function setTipoUsuario($tipousuario){
         $this->usuarioaregistrar->setTipousuario($tipousuario);
-    }
-
-    public function ejecutarInsert(){
-        $nombredelusuario = $this->usuarioaregistrar->getNombreusuario();
-        $descripcion = $this->usuarioaregistrar->getDescripcion();
-        $celular = intval($this->usuarioaregistrar->getCelular());
-        $contraseniausuario = $this->usuarioaregistrar->getContrasenia();
-        $fotoperfil = $this->usuarioaregistrar->getImagen();
-        $nombres = $this->usuarioaregistrar->getNombres();
-        $apellidos = $this->usuarioaregistrar->getApellidos();
-        $nacionalidad = $this->usuarioaregistrar->getNacionalidad();
-        $email = $this->usuarioaregistrar->getEmail();
-        $sexo = $this->usuarioaregistrar->getSexo();
-        $tipousuario = $this->usuarioaregistrar->getTipousuario();
-
-        $sql = "INSERT INTO ajedrez.usuario (nombreusuario,descripcion,celular,contrasenia,fotoperfil,nombres,apellidos,nacionalidad,email,sexo,tipousuario) VALUES ($nombredelusuario,$descripcion,$celular,$contraseniausuario,$fotoperfil,$nombres,$apellidos,$nacionalidad,$email,$sexo,$tipousuario)";
-
-        if (!$this->conn->query($sql)){
-            throw new Exception("Fallo al hacer la query");
-        }
     }
 
     /**
@@ -192,6 +173,24 @@ class ModeloRegistro
         $this->basededatos = $basededatos;
     }
 
+    public function ejecutarInsert(){
+        $nombredelusuario = $this->usuarioaregistrar->getNombreusuario();
+        $descripcion = $this->usuarioaregistrar->getDescripcion();
+        $celular = intval($this->usuarioaregistrar->getCelular());
+        $contraseniausuario = $this->usuarioaregistrar->getContrasenia();
+        $fotoperfil = $this->usuarioaregistrar->getImagen();
+        $nombres = $this->usuarioaregistrar->getNombres();
+        $apellidos = $this->usuarioaregistrar->getApellidos();
+        $nacionalidad = $this->usuarioaregistrar->getNacionalidad();
+        $email = $this->usuarioaregistrar->getEmail();
+        $sexo = $this->usuarioaregistrar->getSexo();
+        $tipousuario = $this->usuarioaregistrar->getTipousuario();
 
+        $sql = 'INSERT INTO ajedrez.usuario (nombreusuario, descripcion, celular,contrasenia,fotoperfil,nombres,apellidos,nacionalidad,email,sexo,tipousuario) VALUES ("'.$nombredelusuario.'","'.$descripcion.'",'.$celular.',"'.$contraseniausuario.'","'.$fotoperfil.'","'.$nombres.'","'.$apellidos.'","'.$nacionalidad.'","'.$email.'","'.$sexo.'","'.$tipousuario.'");';
+
+        if (!$this->conn->query($sql)){
+            throw new Exception("Fallo al hacer la query");
+        }
+    }
 
 }

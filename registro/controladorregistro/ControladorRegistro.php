@@ -11,10 +11,11 @@ try{
     $conexion->setEmailUsuario($_POST["email"]);
     $conexion->setCelularUsuario($_POST["celular"]);
     $conexion->setImagenUsuario("ruta");
-    $conexion->setNickname($_POST["contrasenia"]);
+    $conexion->setNickname($_POST["nombreusuario"]);
     $conexion->setContraseniaUsuario($_POST["contrasenia"],$_POST["repetircontrasenia"]);
     $conexion->setDescripcionUsuario($_POST["descripcionusuario"]);
     $conexion->setTipoUsuario($_POST["tipousuario"]);
+
     $conexion->ejecutarInsert();
     header("location: ../vistaregistro/registrousuario.php?registro=exito");
 }catch (Exception $e){

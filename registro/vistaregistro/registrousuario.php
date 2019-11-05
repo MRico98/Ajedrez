@@ -22,6 +22,7 @@
             <img class="rounded float-left" src="../../indexcomplements/ima/icono.jpg" alt="imagen icono" width="100" height="100">
         </picture>
         <H1 class="font-weight-bolder" id="tituloprincipal">Registro de nuevo usuario</H1>
+
     </header>
 
     <?php if($_GET["registro"] == "exito"){ ?>
@@ -83,6 +84,7 @@
          </article>
 
         </form>
+
     </section>
 
 </body>
