@@ -1,6 +1,10 @@
 pipeline {
     agent any
 
+    environment {
+        def scannerhome = tool 'Sonar-scanner.4';
+     }
+
     stages {
         stage('Obtencion de codigo fuente en repositorio') {
             steps {
@@ -9,7 +13,6 @@ pipeline {
         }
 
         stage('Analisis') {
-        def scannerhome = tool 'Sonar-scanner.4';
             steps {
                         withSonarQubeEnv('SonarQube_7.8'){
                             bat label: '' ,script: "${scannerhome}/bin/sonar-scanner -D sonar.projectKey=ProyectoWeb -D sonar.projectName=ProyectoWeb -D sonar.projectVersion=1.0 -D sonar.sourceEncoding=UTF-8"
