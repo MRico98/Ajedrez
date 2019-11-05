@@ -19,7 +19,7 @@ pipeline {
 
         stage('Deploy') {
             steps {
-                bat label: '', script: "xcopy "C:\Jenkins\workspace\Ajedrez" "C:\Apache24\htdocs" /E /Y"
+                bat label: '', script: "xcopy "C:/Jenkins/workspace/Ajedrez" "C:/Apache24/htdocs" /E /Y"
             }
         }
     }
