@@ -12,7 +12,8 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-    <link href="estilosregistros/estilosregistro.css" rel="stylesheet">
+    <script src="scriptregistros/scriptregistro.js"></script>
+    <link href="estilosregistros/estilosregistros.css" rel="stylesheet">
 </head>
 
 <body>
@@ -21,7 +22,29 @@
         <picture>
             <img class="rounded float-left" src="../../indexcomplements/ima/icono.jpg" alt="imagen icono" width="100" height="100">
         </picture>
+
         <H1 class="font-weight-bolder" id="tituloprincipal">Registro de nuevo usuario</H1>
+
+        <?php
+        $tipousaurio = "usuario";
+        if($_GET["e"] == "admin"){
+            $tipousaurio = $_GET["e"];
+            ?>
+            <section id="formsusuario">
+                <form action="../controladorregistro/ControladorRegistro.php" method="post">
+                    <article class="form-group detallesusuario">
+                        <label class="labelinputs" for="nombreusuario">Nombre del administrador:</label>
+                        <input name="nombreusuario" type="text" class="form-control" id="nombreusuario" required  oninvalid="this.setCustomValidity('Se requiere un nombre de usuario')"  oninput="this.setCustomValidity('')">
+                    </article>
+                    <article class="form-group detallesusuario">
+                        <label class="labelinputs" for="contrasenia">Contraseña del admininstrador:</label>
+                        <input name="contrasenia" type="password" class="form-control" id="contrasenia" required  oninvalid="this.setCustomValidity('Se requiere una contraseña valida')"  oninput="this.setCustomValidity('')">
+                    </article>
+                </form>
+            </section>
+        <?php
+        }
+        ?>
 
     </header>
 
@@ -35,11 +58,10 @@
             <button type="button" class="close" data-dismiss="alert">&times;</button>
             <strong>Error. <?php echo $_GET["mensaje"] ?> </strong>
         </div>
-
      <?php }?>
 
     <section id="cuerpoprincipal">
-        <form action="../controladorregistro/ControladorRegistro.php" method="post">
+        <form id="form2" action="../controladorregistro/ControladorRegistro.php" method="post">
 
         <article class="form-group cuerporegistro">
             <label class="labelinputs" for="nombre">Nombre(s):</label>
@@ -75,11 +97,11 @@
             <label class="labelinputs" for="descripcionusuario">Descripción:</label>
             <br>
             <textarea name="descripcionusuario" id="descripcionusuario" rows="3" cols="60"></textarea>
-            <input type="hidden" name="tipousuario" value="usuario">
+            <input type="hidden" name="tipousuario" value=" <?php echo $tipousaurio ?>">
         </article>
 
          <article class="botonessubmit">
-             <button type="submit" class="btn btn-lg btn-primary">Registrar</button><br><br>
+             <input type="button" value="Registrar" class="btn btn-lg btn-primary">Registrar</input><br><br>
              <a href="../../index.html" type="button" class="btn btn-lg btn-danger">Cancelar</a><br><br>
          </article>
 

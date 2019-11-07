@@ -14,8 +14,8 @@ pipeline {
 
         stage('Analisis') {
             steps {
-                        withSonarQubeEnv('SonarQube_7.8'){
-                            bat label: '' ,script: "${scannerhome}/bin/sonar-scanner -D sonar.projectKey=ProyectoWeb -D sonar.projectName=ProyectoWeb -D sonar.projectVersion=1.0 -D sonar.sourceEncoding=UTF-8"
+                 withSonarQubeEnv('SonarQube_7.8'){
+                 bat label: '' ,script: "${scannerhome}/bin/sonar-scanner -D sonar.projectKey=ProyectoWeb -D sonar.projectName=ProyectoWeb -D sonar.projectVersion=1.0 -D sonar.sourceEncoding=UTF-8"
                 }
             }
         }
