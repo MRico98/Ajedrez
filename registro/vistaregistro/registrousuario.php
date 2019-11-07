@@ -18,6 +18,8 @@
 
 <body>
 
+<h1>demostracion del git hook triger</h1>
+
     <header class="container-fluid" id="cabeceraprincipal">
         <picture>
             <img class="rounded float-left" src="../../indexcomplements/ima/icono.jpg" alt="imagen icono" width="100" height="100">
