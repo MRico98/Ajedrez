@@ -18,8 +18,8 @@ try{
     $conexion->setDescripcionUsuario($_POST["descripcionusuario"]);
     $conexion->setTipoUsuario($_POST["tipousuario"]);
     $conexion->ejecutarInsert();
-    header("location: ../vistaregistro/registrousuario.php?registro=exito&e=admin");
+    header('location: ../vistaregistro/registrousuario.php?registro=exito&e='.$_POST["tipousuario"].'');
 }catch (Exception $e){
     $mensaje = $e->getMessage();
-        header("location: ../vistaregistro/registrousuario.php?registro=fracaso&mensaje=$mensaje&e=admin");
+        header('location: ../vistaregistro/registrousuario.php?registro=fracaso&mensaje='.$mensaje.'&e='.$_POST["tipousuario"].'');
 }
