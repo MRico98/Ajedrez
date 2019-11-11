@@ -1,15 +1,11 @@
 <?php
-
 include('../modeloregistro/ModeloRegistro.php');
 
 try{
-
-    echo $_POST["nombreadministrador"];
-    echo $_POST["nombre"];
-
-
     $conexion = new ModeloRegistro();
-    /**
+    if($_POST["tipousuario"] == "admin"){
+        $conexion->validarLogin($_POST["nombreadministrador"],$_POST["contraseniaadministrador"]);
+    }
     $conexion->setNombresUsuario($_POST["nombre"]);
     $conexion->setApellidosUsuario($_POST["apellidos"]);
     $conexion->setNacionalidad($_POST["nacionalidad"]);
@@ -22,9 +18,8 @@ try{
     $conexion->setDescripcionUsuario($_POST["descripcionusuario"]);
     $conexion->setTipoUsuario($_POST["tipousuario"]);
     $conexion->ejecutarInsert();
-    header("location: ../vistaregistro/registrousuario.php?registro=exito");
-    **/
+    header("location: ../vistaregistro/registrousuario.php?registro=exito&e=admin");
 }catch (Exception $e){
     $mensaje = $e->getMessage();
-    header("location: ../vistaregistro/registrousuario.php?registro=fracaso&mensaje=$mensaje");
+        header("location: ../vistaregistro/registrousuario.php?registro=fracaso&mensaje=$mensaje&e=admin");
 }

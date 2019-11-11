@@ -92,6 +92,14 @@ class ModeloRegistro
         $this->usuarioaregistrar->setSexo($sexo);
     }
 
+    public function validarLogin($usuario,$contrasenia){
+        $consulta = 'SELECT * FROM ajedrez.usuario WHERE nombreusuario LIKE "'.$usuario.'" AND contrasenia LIKE "'.$contrasenia.'" AND tipousuario LIKE "admin";';
+        $resultado = $this->getConexionBaseDeDatos()->hacerQuery($consulta);
+        if($resultado->num_rows==0){
+            throw new Exception("El nombre del administrador no concuerda con la contraseña");
+        }
+    }
+
     public function ejecutarInsert(){
         $nombredelusuario = $this->usuarioaregistrar->getNombreusuario();
         $descripcion = $this->usuarioaregistrar->getDescripcion();

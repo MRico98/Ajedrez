@@ -14,6 +14,7 @@
     <link href="estilosregistros/estilosregistros.css" rel="stylesheet">
 </head>
 <body>
+<form id="formregistro" action="../controladorregistro/ControladorRegistro.php" method="post">
     <header class="container-fluid" id="cabeceraprincipal">
         <picture>
             <img class="rounded float-left" src="../../indexcomplements/ima/icono.jpg" alt="imagen icono" width="100" height="100">
@@ -25,16 +26,14 @@
             $tipousaurio = $_GET["e"];
             ?>
             <section id="formsusuario">
-                <form id="formadministrador" action="../controladorregistro/ControladorRegistro.php" method="post">
                     <article class="form-group detallesusuario">
                         <label class="labelinputs" for="nombreadministrador">Nombre del administrador:</label>
-                        <input name="nombreadministrador" type="text" class="form-control" id="nombreadministrador" required  oninvalid="emptyNombreAdministrador()"  oninput="this.setCustomValidity('')">
+                        <input name="nombreadministrador" type="text" class="form-control" id="nombreadministrador" required>
                     </article>
                     <article class="form-group detallesusuario">
                         <label class="labelinputs" for="contraseniaadministrador">Contraseña del admininstrador:</label>
-                        <input name="contraseniaadministrador" type="password" class="form-control" id="contraseniaadministrador" required  oninvalid="emptyContraseniaAdministrador()"  oninput="this.setCustomValidity('')">
+                        <input name="contraseniaadministrador" type="password" class="form-control" id="contraseniaadministrador" required>
                     </article>
-                </form>
             </section>
         <?php
         }
@@ -52,14 +51,13 @@
         </div>
      <?php }?>
     <section id="cuerpoprincipal">
-        <form id="formregistro" action="../controladorregistro/ControladorRegistro.php" method="post">
         <article class="form-group cuerporegistro">
             <label class="labelinputs" for="nombre">Nombre(s):</label>
-            <input name="nombre" type="text" class="form-control" id="nombre" required  oninvalid="emptyNombre()"  oninput="this.setCustomValidity('')">
+            <input name="nombre" type="text" class="form-control" id="nombre" required>
             <label class="labelinputs" for="apellidos">Apellido(s):</label>
-            <input name="apellidos" type="text" class="form-control" id="apellidos" required  oninvalid="emptyApellido()"  oninput="this.setCustomValidity('')">
+            <input name="apellidos" type="text" class="form-control" id="apellidos" required>
             <label class="labelinputs" for="nacionalidad">Nacionalidad:</label>
-            <input name="nacionalidad" type="text" class="form-control" id="nacionalidad" required  oninvalid="emptyNacionalidad()"  oninput="this.setCustomValidity('')">
+            <input name="nacionalidad" type="text" class="form-control" id="nacionalidad" required>
             <label class="labelinputs" for="sexo">Sexo:</label>
             <select name="sexo" class="form-control" id="sexo">
                 <option>Hombre</option>
@@ -67,9 +65,9 @@
                 <option>Otro</option>
             </select>
             <label class="labelinputs" for="email">Email:</label>
-            <input name="email" type="email" class="form-control" id="email" required  oninvalid="emptyEmail()"  oninput="this.setCustomValidity('')">
+            <input name="email" type="email" class="form-control" id="email" required>
             <label class="labelinputs" for="celular">Celular:</label>
-            <input name="celular" type="number" class="form-control" id="celular"  oninvalid="emptyNumTelefono()"  oninput="this.setCustomValidity('')">
+            <input name="celular" type="number" class="form-control" id="celular">
         </article>
         <article class="form-group detallesusuario">
             <picture>
@@ -78,23 +76,23 @@
             <label class="labelinputs" for="imagenperfil">Seleccione una imagen de perfil</label>
             <input name="imagenperfil" type="file" id="imagenperfil" accept="image/png,image/jpg">
             <label class="labelinputs" for="nombreusuario">Nombre de usuario:</label>
-            <input name="nombreusuario" type="text" class="form-control" id="nombreusuario" required  oninvalid="emptyNombreDeUsuario()"  oninput="this.setCustomValidity('')">
+            <input name="nombreusuario" type="text" class="form-control" id="nombreusuario" required>
             <label class="labelinputs" for="contrasenia">Contraseña:</label>
-            <input name="contrasenia" type="password" class="form-control" id="contrasenia" required  oninvalid="emptyContrasenia()"  oninput="this.setCustomValidity('')">
+            <input name="contrasenia" type="password" class="form-control" id="contrasenia" required>
             <label class="labelinputs" for="repetircontrasenia">Repita al contraseña</label>
-            <input name="repetircontrasenia" type="password" class="form-control" id="repetircontrasenia" required  oninvalid="emptyRepetirContrasenia()" oninput="this.setCustomValidity('')">
+            <input name="repetircontrasenia" type="password" class="form-control" id="repetircontrasenia">
             <label class="labelinputs" for="descripcionusuario">Descripción:</label>
             <br>
             <textarea name="descripcionusuario" id="descripcionusuario" rows="3" cols="60"></textarea>
             <input type="hidden" name="tipousuario" value="<?php echo $tipousaurio ?>">
         </article>
          <article class="botonessubmit">
+             <input type="button" value="Registrar" class="btn btn-lg btn-primary" onclick="submitForms()">
              <br><br>
              <a href="../../index.html" type="button" class="btn btn-lg btn-danger">Cancelar</a><br><br>
          </article>
-        </form>
-        <input type="button" value="Registrar" class="btn btn-lg btn-primary" onclick="submitForms()">
     </section>
     <script src="scriptregistros/scriptregistro.js"></script>
+</form>
 </body>
 </html>
