@@ -1,15 +1,12 @@
 <?php
 
 include ("Usuario.php");
+include("ConexionDatabase.php");
 
 class ModeloRegistro
 {
-    private $servidor = "69.46.5.165:85";
-    private $nombreusuario = "root";
-    private $contrasenia = "admin";
-    private $basededatos = "ajedrez";
-    private $conn;
     private $usuarioaregistrar;
+    private $ConexionBaseDeDatos;
 
     /**
      * ModeloRegistro constructor.
@@ -18,31 +15,12 @@ class ModeloRegistro
     public function __construct()
     {
         $this->usuarioaregistrar = new Usuario();
-        $this->conn = new mysqli($this->getServidor(), $this->getNombreusuario(), $this->getContrasenia(),$this->getBasededatos());
-        if($this->conn->connect_error){
-            throw new Exception("Fallo+al+conectar+con+el+servidor.+Contacte+con+el+administrador");
-        }
-    }
-
-    public function setNombresUsuario($nombres){
-        $this->usuarioaregistrar->setNombres($nombres);
-    }
-
-    public function setApellidosUsuario($apellidos){
-        $this->usuarioaregistrar->setApellidos($apellidos);
-    }
-
-    public function setNacionalidad($nacionalidad){
-        $this->usuarioaregistrar->setNacionalidad($nacionalidad);
-    }
-
-    public function setSexoUsario($sexo){
-        $this->usuarioaregistrar->setSexo($sexo);
+        $this->ConexionBaseDeDatos = new ConexionDatabase();
     }
 
     public function setEmailUsuario($email){
         $consulta = 'SELECT email FROM ajedrez.usuario WHERE email LIKE "'.$email.'"';
-        $resultado = $this->conn->query($consulta);
+        $resultado = $this->getConexionBaseDeDatos()->hacerQuery($consulta);
         if($resultado->num_rows>0){
             throw new Exception("Esta cuenta de Email ya esta registrada");
         }
@@ -55,7 +33,7 @@ class ModeloRegistro
             return;
         }
         $consulta = 'SELECT celular FROM ajedrez.usuario WHERE celular LIKE "'.$celular.'"';
-        $resultado = $this->conn->query($consulta);
+        $resultado = $this->getConexionBaseDeDatos()->hacerQuery($consulta);
         if($resultado->num_rows>0){
             throw new Exception("Esta numero de telefono ya existe");
         }
@@ -64,7 +42,7 @@ class ModeloRegistro
 
     public function setNickname($nickname){
         $consulta = 'SELECT nombreusuario FROM ajedrez.usuario WHERE nombreusuario LIKE "'.$nickname.'"';
-        $resultado = $this->conn->query($consulta);
+        $resultado = $this->getConexionBaseDeDatos()->hacerQuery($consulta);
         if($resultado->num_rows>0){
             throw new Exception("Este nickname ya existe");
         }
@@ -93,84 +71,25 @@ class ModeloRegistro
         $this->usuarioaregistrar->setTipousuario($tipousuario);
     }
 
-    /**
-     * @return string
-     */
-    public function getServidor()
+    public function getConexionBaseDeDatos()
     {
-        return $this->servidor;
+        return $this->ConexionBaseDeDatos;
     }
 
-    /**
-     * @param string $servidor
-     */
-    public function setServidor($servidor)
-    {
-        $this->servidor = $servidor;
+    public function setNombresUsuario($nombres){
+        $this->usuarioaregistrar->setNombres($nombres);
     }
 
-    /**
-     * @return string
-     */
-    public function getNombreusuario()
-    {
-        return $this->nombreusuario;
+    public function setApellidosUsuario($apellidos){
+        $this->usuarioaregistrar->setApellidos($apellidos);
     }
 
-    /**
-     * @param string $nombreusuario
-     */
-    public function setNombreusuario($nombreusuario)
-    {
-        $this->nombreusuario = $nombreusuario;
+    public function setNacionalidad($nacionalidad){
+        $this->usuarioaregistrar->setNacionalidad($nacionalidad);
     }
 
-    /**
-     * @return string
-     */
-    public function getContrasenia()
-    {
-        return $this->contrasenia;
-    }
-
-    /**
-     * @param string $contrasenia
-     */
-    public function setContrasenia($contrasenia)
-    {
-        $this->contrasenia = $contrasenia;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getUsuarioaregistrar()
-    {
-        return $this->usuarioaregistrar;
-    }
-
-    /**
-     * @param mixed $usuarioaregistrar
-     */
-    public function setUsuarioaregistrar($usuarioaregistrar)
-    {
-        $this->usuarioaregistrar = $usuarioaregistrar;
-    }
-
-    /**
-     * @return string
-     */
-    public function getBasededatos()
-    {
-        return $this->basededatos;
-    }
-
-    /**
-     * @param string $basededatos
-     */
-    public function setBasededatos($basededatos)
-    {
-        $this->basededatos = $basededatos;
+    public function setSexoUsario($sexo){
+        $this->usuarioaregistrar->setSexo($sexo);
     }
 
     public function ejecutarInsert(){
@@ -185,10 +104,8 @@ class ModeloRegistro
         $email = $this->usuarioaregistrar->getEmail();
         $sexo = $this->usuarioaregistrar->getSexo();
         $tipousuario = $this->usuarioaregistrar->getTipousuario();
-
         $sql = 'INSERT INTO ajedrez.usuario (nombreusuario, descripcion, celular,contrasenia,fotoperfil,nombres,apellidos,nacionalidad,email,sexo,tipousuario) VALUES ("'.$nombredelusuario.'","'.$descripcion.'",'.$celular.',"'.$contraseniausuario.'","'.$fotoperfil.'","'.$nombres.'","'.$apellidos.'","'.$nacionalidad.'","'.$email.'","'.$sexo.'","'.$tipousuario.'");';
-
-        if (!$this->conn->query($sql)){
+        if (!$this->getConexionBaseDeDatos()->hacerQuery($sql)){
             throw new Exception("Fallo al hacer la query");
         }
     }
