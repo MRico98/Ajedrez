@@ -4,7 +4,10 @@ include ('../modellogin/ModelLogIn.php');
 $modelo = new ModelLogIn();
 $query = $modelo->checkLogin($_POST["nombreusuario"],$_POST["contraseniausuario"]);
 if($query->num_rows>0){
-    header('Location: ../../foro/vistaforo/perfilusuario.php');
+    $fila = $query->fetch_assoc();
+    session_start();
+    $_SESSION["sesionusuario"] = $fila["nombres"].' '.$fila["apellidos"];
+    header('Location: ../../foro/vistaforo/inicioajedrez/Ajedrez.php');
     die();
 }
 header('Location: ../../index.html?error=adfe3');

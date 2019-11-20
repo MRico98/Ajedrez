@@ -1,0 +1,14 @@
+#cabeceraprincipal{
+    height: 70px;
+}
+
+#infoperfil{
+    background-color: darkslategrey;
+    border-radius: 25px;
+    float: right;
+    padding: 10px 20px;
+}
+
+#infoperfil:hover{
+    background-color: slategrey;
+}
