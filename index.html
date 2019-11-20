@@ -11,50 +11,39 @@
     <title>Ajedrez</title>
 </head>
 <body id="cuerpo">
-
     <section style="padding: 30px 0 0 8px">
-
         <figure class="d-inline" type = "fotografia">
             <img src="indexcomplements/ima/tableroparte1.png" alt="nuevo" class = "rounded button" >
         </figure>
-
         <figure class="d-inline" type = "fotografia">
             <a href="historia/historia.html">
                 <img src="indexcomplements/ima/tableroparte2.png" alt="nuevo" class = "rounded button">
             </a>
         </figure>
-
         <figure class="d-inline" type="fotografia">
             <a href="jugadores/jugadores.html">
                 <img src="indexcomplements/ima/tableroparte3.png" alt="nuevo" class = "rounded button">
             </a>
         </figure>
-
         <figure class="d-inline" >
             <img src="indexcomplements/ima/tableroparte4.png" alt="nuevo" class = "rounded button" id="imagenforo">
         </figure>
-
     </section>
-
     <section class = "popup">
-
         <article class = "popupcontent">
-
             <img class="imagenlogin" src="indexcomplements/ima/iconoestandarlogin.jpg" alt="user" width="50" height="50">
-            <input class = "inputlogin" type="text" placeholder="nombre de usuario">
-            <input class = "inputlogin" type="password" placeholder="password"><br>
-            <a type = "button" class="btn btn-primary">Log in</a><br>
-            <br><a type = "button" class="btn btn-danger" id="cancelar">Cancelar</a><br>
+            <form action="login/controllerlogin/controllerlogin.php" method="post">
+                <input name="nombreusuario" class = "inputlogin" type="text" placeholder="nombre de usuario">
+                <input name="contraseniausuario" class = "inputlogin" type="password" placeholder="password"><br>
+                <input type = "submit" class="btn btn-primary" value="Log in"><br>
+                <br><a type = "button" class="btn btn-danger" id="cancelar">Cancelar</a><br>
+            </form>
             <br>
             <a href="registro/vistaregistro/registrousuario.php">Registrar nuevo usuario</a>
             <br>
             <a href="registro/vistaregistro/registrousuario.php?e=admin">Registrar nuevo administrador</a>
-
         </article>
-
     </section>
-
 <script src="indexcomplements/script/scriptindex.js"></script>
-
 </body>
 </html>

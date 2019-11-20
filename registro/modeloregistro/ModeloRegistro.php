@@ -1,7 +1,7 @@
 <?php
 
 include ("Usuario.php");
-include("ConexionDatabase.php");
+include("../../utilidades/ConexionDatabase.php");
 
 class ModeloRegistro
 {
@@ -117,5 +117,7 @@ class ModeloRegistro
             throw new Exception("Fallo al hacer la query");
         }
     }
+    // SELECT * WHERE nombre = "manuel";
+
 
 }

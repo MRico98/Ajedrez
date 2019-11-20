@@ -1,0 +1,34 @@
+{
+  "name": "ajedrez",
+  "version": "1.0.0",
+  "description": "Proyecto final para la asignatura de programacion web",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MRico98/Ajedrez.git"
+  },
+  "keywords": [
+    "Ajedrez",
+    "SQL",
+    "MYSQL",
+    "PHP",
+    "JS",
+    "CSS",
+    "HTML5",
+    "Web"
+  ],
+  "author": "Manuel Rico",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/MRico98/Ajedrez/issues"
+  },
+  "homepage": "https://github.com/MRico98/Ajedrez#readme",
+  "dependencies": {
+    "bootstrap": "^4.3.1",
+    "jquery": "^3.4.1",
+    "popper.js": "^1.16.0"
+  }
+}
