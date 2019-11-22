@@ -27,7 +27,9 @@ if($_SESSION["sesionusuario"] == '' && $_SESSION["sesionusuario"] == null){
     <picture>
         <img class="rounded float-left" src="../../../indexcomplements/ima/icono.jpg" alt="imagen icono" width="50" height="50">
     </picture>
-    <H3 class="font-weight-bolder" id="tituloprincipal">Ajedrez</H3><H3 id="infoperfil"><?php echo $_SESSION["sesionusuario"] ?></H3>
+    <H3 class="font-weight-bolder" id="tituloprincipal">Ajedrez</H3>
+    <a href="../perfilusuario/PerfilUsuario.php"><H3 id="infoperfil"><?php echo $_SESSION["sesionusuario"] ?></H3>
+    </a>
 </header>
 <section id="cuerpoprincipal">
 
