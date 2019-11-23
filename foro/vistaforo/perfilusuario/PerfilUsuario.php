@@ -19,7 +19,7 @@ if($_SESSION["sesionusuario"] == '' && $_SESSION["sesionusuario"] == null){
     <script src="../../../node_modules/jquery/dist/jquery.js"></script>
     <script src="../../../node_modules/popper.js/dist/popper.min.js"></script>
     <script src="../../../node_modules/bootstrap/dist/js/bootstrap.js"></script>
-    <script src="scriptperfilusuario/ScriptPerfilUsuario.js"></script>
+
     <link rel="stylesheet" href="../../../registro/vistaregistro/estilosregistros/estilosregistros.css">
     <link rel="stylesheet" href="estilosperfilusuario/EstilosPerfilUsuario.css">
     <link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/3.18.1/build/cssreset-context/cssreset-context-min.css">
@@ -44,37 +44,26 @@ if($_SESSION["sesionusuario"] == '' && $_SESSION["sesionusuario"] == null){
     </aside>
     <section id="cuerpoprincipal">
         <article id="descripcionusuario">
-               Descripcion de usuario
+               Descripcion de usuario ajnsvjidjndwvijnwvojnervojnervorevnorevoervjfkjfdvkjfdvkjdfvkjnfdvjkfdnvkjfdnvkfdnvkfdnvfdknvfdkjvnfdnvfdjkvnfdkjvfdkvnfdkjvnfdkjvnfdjkv
         </article>
-        <article>
-            <div class="container">
-                <h2>Basic Modal Example</h2>
-                <!-- Trigger the modal with a button -->
-                <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Open Modal</button>
-
-                <!-- Modal -->
-                <div class="modal fade" id="myModal" role="dialog">
-                    <div class="modal-dialog">
-
-                        <!-- Modal content-->
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                <h4 class="modal-title">Modal Header</h4>
-                            </div>
-                            <div class="modal-body">
-                                <p>Some text in the modal.</p>
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                            </div>
-                        </div>
-
+        <button type="button" class="btn btn-secondary btn-lg btn-block" id="botoncrearforo">Crear foro</button>
+        <article class="modal">
+            <div class="contenidomodal">
+                <span class="close">&times;</span>
+                <form>
+                    <div class="form-group">
+                        <label for="formGroupExampleInput">Titulo</label>
+                        <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Example input">
                     </div>
-                </div>
-
+                    <div class="form-group">
+                        <label for="descripcionforo">Descripcion del foro</label>
+                        <textarea class="form-control" id="descripcionforo" rows="3"></textarea>
+                    </div>
+                </form>
             </div>
         </article>
+        <article id="paginacionforos"></article>
+        <article id="paginacioncomentarios"></article>
     </section>
     <aside id = "bloqueinformacion">
         <table class="table table-striped">
@@ -119,5 +108,6 @@ if($_SESSION["sesionusuario"] == '' && $_SESSION["sesionusuario"] == null){
         </table>
     </aside>
 </div>
+<script src="scriptperfilusuario/ScriptPerfilUsuario.js"></script>
 </body>
 </html>
