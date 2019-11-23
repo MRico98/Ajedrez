@@ -1,7 +1,6 @@
 #cabeceraprincipal{
     height: 70px;
 }
-
 #bloquefotoperfil{
     display: block;
     text-align: center;
@@ -11,14 +10,12 @@
     margin-left: 10px;
     align-content: center;
 }
-
 #cuerpoprincipal{
     float: left;
     display: block;
-    left: 34%;
-    width: 1000px;
+    left: 28.5%;
+    width: 875px;
 }
-
 #imagendeperfil{
     display: inline-block;
     margin-top: 25px;
@@ -33,7 +30,21 @@
     margin-right: 25px;
     display: block;
     float: right;
-    background-color: red;
-    width: 500px;
+    width: 350px;
     height: 400px;
+}
+#descripcionusuario{
+    margin: auto;
+    overflow: hidden;
+    width: 800px;
+    background-color: white;
+    border-style: inset;
+    border-radius: 20px;
+    word-wrap: break-word;
+}
+#modalforo{
+    left: 0;
+    position: absolute;
+    float: none;
+    background: none;
 }
