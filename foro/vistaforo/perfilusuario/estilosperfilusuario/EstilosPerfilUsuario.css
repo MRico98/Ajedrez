@@ -54,16 +54,20 @@
     width: 100%;
     height: 100%;
     overflow: auto;
+    margin-top: 75px;
+    border-radius: 30px;
 }
 .contenidomodal{
-    background-color: #fefefe;
-    margin: 15% auto; /* 15% from the top and centered */
+    position: relative;
+    background-color: lightgrey;
+    margin: 15% 5% auto; /* 15% from the top and centered */
     padding: 20px;
     border: 1px solid #888;
-    width: 80%; /* Could be more or less, depending on screen size */
+    width: 90%; /* Could be more or less, depending on screen size */
+    border-radius: 30px;
 }
 #descripcionforo{
-    width: 650px;
+    width: 740px;
 }
 #botoncrearforo{
     margin-top: 20px;

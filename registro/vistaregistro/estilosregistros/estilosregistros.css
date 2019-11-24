@@ -1,17 +1,14 @@
 body{
     background: slategrey;
 }
-
 textarea{
     border-radius: 25px;
 }
-
 #cabeceraprincipal{
     background: dimgrey;
     padding-top: 10px;
     height: 120px;
 }
-
 #tituloprincipal{
     padding-left: 10px;
     padding-top: 10px;
@@ -19,7 +16,6 @@ textarea{
     width: 100px;
     color: black;
 }
-
 #cuerpoprincipal{
     position: relative;
     left: 50%;
@@ -30,13 +26,11 @@ textarea{
     height: 100%;
     overflow: hidden;
 }
-
 .cuerporegistro {
     display: inline-block;
     width: 400px;
     height: 75vh;
 }
-
 .detallesusuario{
     display: inline-block;
     width: 400px;

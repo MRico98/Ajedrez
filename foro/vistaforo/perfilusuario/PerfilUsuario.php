@@ -6,7 +6,7 @@ if($_SESSION["sesionusuario"] == '' && $_SESSION["sesionusuario"] == null){
     die();
 }
 $controladorperfil = new ControladorPerfil();
-$informacionusuario = $controladorperfil->getInformacion($_POST["idusuario"])->fetch_assoc();
+$informacionusuario = $controladorperfil->getInformacion($_GET["idusuario"])->fetch_assoc();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -27,7 +27,7 @@ $informacionusuario = $controladorperfil->getInformacion($_POST["idusuario"])->f
     <link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/3.18.1/build/cssreset-context/cssreset-context-min.css">
     <link rel="stylesheet" type="text/css" href="../inicioajedrez/estilosinicio/EstilosInicio.css">
 </head>
-<body>
+<body id="cuerpoperfil">
 <header class="container-fluid" id="cabeceraprincipal">
     <a href="../inicioajedrez/Ajedrez.php">
         <picture>
@@ -55,21 +55,24 @@ $informacionusuario = $controladorperfil->getInformacion($_POST["idusuario"])->f
     </aside>
     <section id="cuerpoprincipal">
         <article id="descripcionusuario">
-               Descripcion de usuario ajnsvjidjndwvijnwvojnervojnervorevnorevoervjfkjfdvkjfdvkdfdfsdsdjdfvkjnfdvjkfdnvkjfdnvkfdnvkfdnvfdknvfdkjvnfdnvfdjkvnfdkjvfdkvnfdkjvnfdkjvnfdjkv
+               <?php echo $informacionusuario["descripcion"]; ?>
         </article>
         <button type="button" class="btn btn-secondary btn-lg btn-block" id="botoncrearforo">Crear foro</button>
         <article class="modal">
             <div class="contenidomodal">
                 <span class="close">&times;</span>
-                <form>
+                <form action="../../controladorforo/controladorregistroforo/ControladorRegistroForo.php" method="get">
                     <div class="form-group">
                         <label for="formGroupExampleInput">Titulo</label>
-                        <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Example input">
+                        <input name="titulo" type="text" class="form-control" id="formGroupExampleInput">
                     </div>
                     <div class="form-group">
                         <label for="descripcionforo">Descripcion del foro</label>
                         <br>
-                        <textarea class="form-control" id="descripcionforo" rows="3"></textarea>
+                        <textarea name="descripcion" class="form-control" id="descripcionforo" rows="3"></textarea>
+                        <input type="hidden" name="idusuario" value="<?php echo $_SESSION["idusuario"] ?>">
+                        <input type="hidden" name="fechapublicacion" value="<?php echo date("Y-m-d") ?>">
+                        <input type="submit" class="btn" value="suss">
                     </div>
                 </form>
             </div>

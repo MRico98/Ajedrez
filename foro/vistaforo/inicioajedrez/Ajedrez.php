@@ -34,7 +34,7 @@ if($_SESSION["sesionusuario"] == '' || $_SESSION["sesionusuario"] == null){
         <img  src="../../imagenes/busquedalupa.png" width="40" height="40">
         <input type="text" class="form-control">
     </form>
-    <form action="../perfilusuario/PerfilUsuario.php" method="post" id="formsusuario">
+    <form action="../perfilusuario/PerfilUsuario.php" method="get" id="formsusuario">
         <button name="idusuario" id="botonperfil" type="submit" value="<?php echo $_SESSION["idusuario"] ?>">
             <H3 id="infoperfil"><?php echo $_SESSION["sesionusuario"] ?></H3></button>
     </form>
