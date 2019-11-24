@@ -10,27 +10,73 @@
     <meta name="viewport" content="width=device-width, initial-scale 1">
     <title>Ajedrez</title>
 </head>
-<body id="cuerpo">
-    <section style="padding: 30px 0 0 8px">
-        <figure class="d-inline" type = "fotografia">
-            <a href="sobreElJuego/sobreElJuego.html">
-                <img src="indexcomplements/ima/tableroparte1.png" alt="nuevo" class = "rounded button">
-            </a>
-        </figure>
-        <figure class="d-inline" type = "fotografia">
-            <a href="historia/historia.html">
-                <img src="indexcomplements/ima/tableroparte2.png" alt="nuevo" class = "rounded button">
-            </a>
-        </figure>
-        <figure class="d-inline" type="fotografia">
-            <a href="jugadores/jugadores.html">
-                <img src="indexcomplements/ima/tableroparte3.png" alt="nuevo" class = "rounded button">
-            </a>
-        </figure>
-        <figure class="d-inline" >
-            <img src="indexcomplements/ima/tableroparte4.png" alt="nuevo" class = "rounded button" id="imagenforo">
-        </figure>
-    </section>
+<body id="cuerpo">    
+    <div class="contaier">
+        <div class="row justify-content-center">
+            <div class="col-md-3">
+                <div class="card shadow" style="width: 20rem;">
+                    <div class="inner">
+                        <a href="sobreElJuego/sobreElJuego.html">
+                            <img src="indexcomplements/ima/tableroparte1.png" alt="nuevo" class = "card-img-top" >
+                        </a>
+                    </div> 
+                    <div class="card-body text-center">
+                        <h5 class="card-title">Sobre el Juego</h5>
+                        <p>
+                            Aprenda desde cero a jugar ajedrez.
+                        </p>
+                    </div>
+                    <a href="sobreElJuego/sobreElJuego.html" class="btn btn-success">Ir</a>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card shadow" style="width: 20rem;">
+                    <div class="inner">
+                        <a href="historia/historia.html">
+                            <img src="indexcomplements/ima/tableroparte2.png" alt="nuevo" class = "card-img-top" >
+                        </a>
+                    </div> 
+                    <div class="card-body text-center">
+                        <h5 class="card-title">Historia</h5>
+                        <p>
+                            Conozca un poco más sobre la historia del deporte ciencia.
+                        </p>
+                    </div>
+                    <a href="historia/historia.html" class="btn btn-success">Ir</a>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card shadow" style="width: 20rem;">
+                    <div class="inner">
+                        <a href="jugadores/jugadores.html">
+                            <img src="indexcomplements/ima/tableroparte3.png" alt="nuevo" class = "card-img-top" >
+                        </a>
+                    </div>    
+                    <div class="card-body text-center">
+                        <h5 class="card-title">Jugadores Destacadaso</h5>
+                        <p>
+                            Conozca a los jugadores más talentosos de este juego.
+                        </p>
+                    </div>
+                    <a href="jugadores/jugadores.html" class="btn btn-success">Ir</a>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card shadow" style="width: 20rem;">
+                    <div class="inner">
+                        <img src="indexcomplements/ima/tableroparte4.png" alt="nuevo" class = "card-img-top" id="botonforo">
+                    </div> 
+                    <div class="card-body text-center">
+                        <h5 class="card-title">Discusión</h5>
+                        <p>
+                            Participe en nuestro foro de usuarios.
+                        </p>
+                    </div>
+                    <a class="btn btn-success" id="imagenforo">Ir</a>
+                </div>
+            </div>
+        </div>
+    </div>
     <section class = "popup">
         <article class = "popupcontent">
             <img class="imagenlogin" src="indexcomplements/ima/iconoestandarlogin.jpg" alt="user" width="50" height="50">
