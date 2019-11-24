@@ -1,9 +1,12 @@
 <?php
+include('../../controladorforo/controladorperfil/ControladorPerfil.php');
 session_start();
 if($_SESSION["sesionusuario"] == '' && $_SESSION["sesionusuario"] == null){
     header('Location: ../../../index.html?error=nosession');
     die();
 }
+$controladorperfil = new ControladorPerfil();
+$informacionusuario = $controladorperfil->getInformacion($_GET["idusuario"])->fetch_assoc();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -19,12 +22,12 @@ if($_SESSION["sesionusuario"] == '' && $_SESSION["sesionusuario"] == null){
     <script src="../../../node_modules/jquery/dist/jquery.js"></script>
     <script src="../../../node_modules/popper.js/dist/popper.min.js"></script>
     <script src="../../../node_modules/bootstrap/dist/js/bootstrap.js"></script>
-    <script src="scriptperfilusuario/ScriptPerfilUsuario.js"></script>
     <link rel="stylesheet" href="../../../registro/vistaregistro/estilosregistros/estilosregistros.css">
     <link rel="stylesheet" href="estilosperfilusuario/EstilosPerfilUsuario.css">
     <link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/3.18.1/build/cssreset-context/cssreset-context-min.css">
+    <link rel="stylesheet" type="text/css" href="../inicioajedrez/estilosinicio/EstilosInicio.css">
 </head>
-<body>
+<body id="cuerpoperfil">
 <header class="container-fluid" id="cabeceraprincipal">
     <a href="../inicioajedrez/Ajedrez.php">
         <picture>
@@ -32,49 +35,50 @@ if($_SESSION["sesionusuario"] == '' && $_SESSION["sesionusuario"] == null){
         </picture>
         <H3 class="font-weight-bolder" id="tituloprincipal">Ajedrez</H3>
     </a>
+    <form id="formbusqueda">
+        <img  src="../../imagenes/busquedalupa.png" width="40" height="40">
+        <input type="text" class="form-control">
+    </form>
+    <form action="../perfilusuario/PerfilUsuario.php" method="post" id="formsusuario">
+        <button name="idusuario" id="botonperfil" type="submit" value="<?php echo $_SESSION["idusuario"] ?>">
+            <H3 id="infoperfil"><?php echo $_SESSION["sesionusuario"] ?></H3>
+    </form>
 </header>
 <div id="cuerpoperfil">
     <aside id="bloquefotoperfil">
         <figure id="imagendeperfil" >
             <img class="rounded float-left" src="../../../imagenesperfil/iconoestandarlogin.jpg" alt="imagen icono" width="200" height="200">
-            <figcaption>
-                <h2 id="infoperfil">Nombre</h2>
+            <figcaption id="nombreusuariofoto">
+                <h2 id="infoperfilusuario"><?php echo $informacionusuario["nombres"] ?> <?php echo $informacionusuario["apellidos"] ?></h2>
             </figcaption>
         </figure>
     </aside>
     <section id="cuerpoprincipal">
         <article id="descripcionusuario">
-               Descripcion de usuario
+               <?php echo $informacionusuario["descripcion"]; ?>
         </article>
-        <article>
-            <div class="container">
-                <h2>Basic Modal Example</h2>
-                <!-- Trigger the modal with a button -->
-                <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Open Modal</button>
-
-                <!-- Modal -->
-                <div class="modal fade" id="myModal" role="dialog">
-                    <div class="modal-dialog">
-
-                        <!-- Modal content-->
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                <h4 class="modal-title">Modal Header</h4>
-                            </div>
-                            <div class="modal-body">
-                                <p>Some text in the modal.</p>
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                            </div>
-                        </div>
-
+        <button type="button" class="btn btn-secondary btn-lg btn-block" id="botoncrearforo">Crear foro</button>
+        <article class="modal">
+            <div class="contenidomodal">
+                <span class="close">&times;</span>
+                <form action="../../controladorforo/controladorregistroforo/ControladorRegistroForo.php" method="get">
+                    <div class="form-group">
+                        <label for="formGroupExampleInput">Titulo</label>
+                        <input name="titulo" type="text" class="form-control" id="formGroupExampleInput">
                     </div>
-                </div>
-
+                    <div class="form-group">
+                        <label for="descripcionforo">Descripcion del foro</label>
+                        <br>
+                        <textarea name="descripcion" class="form-control" id="descripcionforo" rows="3"></textarea>
+                        <input type="hidden" name="idusuario" value="<?php echo $_SESSION["idusuario"] ?>">
+                        <input type="hidden" name="fechapublicacion" value="<?php echo date("Y-m-d") ?>">
+                        <input type="submit" class="btn" value="suss">
+                    </div>
+                </form>
             </div>
         </article>
+        <article id="paginacionforos"></article>
+        <article id="paginacioncomentarios"></article>
     </section>
     <aside id = "bloqueinformacion">
         <table class="table table-striped">
@@ -83,41 +87,42 @@ if($_SESSION["sesionusuario"] == '' && $_SESSION["sesionusuario"] == null){
                 <th scope="row">Nombre de usuario</th>
             </tr>
             <tr>
-                <td>Nombre de usuario</td>
+                <td><?php echo $informacionusuario["nombreusuario"] ?></td>
             </tr>
             <tr>
                 <th scope="row">Numero de celular</th>
             </tr>
             <tr>
-                <td>Numero de celular</td>
+                <td><?php echo $informacionusuario["celular"] ?></td>
             </tr>
             <tr>
                 <th scope="row">Email</th>
             </tr>
             <tr>
-                <td>Email</td>
+                <td><?php echo $informacionusuario["email"] ?></td>
             </tr>
             <tr>
                 <th scope="row">Sexo</th>
             </tr>
             <tr>
-                <td>Sexo</td>
+                <td><?php echo $informacionusuario["sexo"] ?></td>
             </tr>
             <tr>
                 <th scope="row">Nacionalidad</th>
             </tr>
             <tr>
-                <td>Nacionalidad</td>
+                <td><?php echo $informacionusuario["nacionalidad"] ?></td>
             </tr>
             <tr>
                 <th scope="row">Tipo de usuario</th>
             </tr>
             <tr>
-                <td>Tipo de usuario</td>
+                <td><?php echo $informacionusuario["tipousuario"] ?></td>
             </tr>
             </tbody>
         </table>
     </aside>
 </div>
+<script src="scriptperfilusuario/ScriptPerfilUsuario.js"></script>
 </body>
 </html>

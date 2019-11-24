@@ -1,7 +1,7 @@
 #cabeceraprincipal{
     height: 70px;
+    text-align: center;
 }
-
 #infoperfil{
     background-color: darkslategrey;
     border-radius: 25px;
@@ -9,7 +9,24 @@
     padding: 10px 20px;
     color: white;
 }
-
+#tituloprincipal{
+    float: left;
+}
 #infoperfil:hover{
     background-color: slategrey;
+}
+#imagenlupa{
+    display: inline-block;
+}
+#formbusqueda{
+    display: inline-block;
+    width: 400px;
+    margin: 5px;
+}
+.form-control{
+    display: inline-block;
+    width: 300px;
+}
+#paginacionforos{
+    height: 100px;
 }
