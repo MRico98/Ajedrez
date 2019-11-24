@@ -16,10 +16,10 @@
 <body>
 <form id="formregistro" action="../controladorregistro/ControladorRegistro.php" method="post">
     <header class="container-fluid" id="cabeceraprincipal">
-        <picture>
-            <img class="rounded float-left" src="../../indexcomplements/ima/icono.jpg" alt="imagen icono" width="100" height="100">
-        </picture>
-        <H1 class="font-weight-bolder" id="tituloprincipal">Registro de nuevo usuario</H1>
+            <picture>
+                <img class="rounded float-left" src="../../indexcomplements/ima/icono.jpg" alt="imagen icono" width="100" height="100">
+            </picture>
+            <H1 class="font-weight-bolder" id="tituloprincipal">Registro de nuevo usuario</H1>
         <?php
         $tipousaurio = "usuario";
         if($_GET["e"] == "admin"){

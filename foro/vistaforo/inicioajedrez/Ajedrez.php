@@ -1,6 +1,6 @@
 <?php
 session_start();
-if($_SESSION["sesionusuario"] == '' && $_SESSION["sesionusuario"] == null){
+if($_SESSION["sesionusuario"] == '' || $_SESSION["sesionusuario"] == null){
     header('Location: ../../../index.html?error=nosession');
     die();
 }
@@ -24,15 +24,23 @@ if($_SESSION["sesionusuario"] == '' && $_SESSION["sesionusuario"] == null){
 </head>
 <body>
 <header class="container-fluid" id="cabeceraprincipal">
-    <picture>
-        <img class="rounded float-left" src="../../../indexcomplements/ima/icono.jpg" alt="imagen icono" width="50" height="50">
-    </picture>
-    <H3 class="font-weight-bolder" id="tituloprincipal">Ajedrez</H3>
-    <a href="../perfilusuario/PerfilUsuario.php"><H3 id="infoperfil"><?php echo $_SESSION["sesionusuario"] ?></H3>
+    <a href="">
+        <picture>
+            <img class="rounded float-left" src="../../../indexcomplements/ima/icono.jpg" alt="imagen icono" width="50" height="50">
+        </picture>
+        <H3 class="font-weight-bolder" id="tituloprincipal">Ajedrez</H3>
     </a>
+    <form id="formbusqueda">
+        <img  src="../../imagenes/busquedalupa.png" width="40" height="40">
+        <input type="text" class="form-control">
+    </form>
+    <form action="../perfilusuario/PerfilUsuario.php" method="post" id="formsusuario">
+        <button name="idusuario" id="botonperfil" type="submit" value="<?php echo $_SESSION["idusuario"] ?>">
+            <H3 id="infoperfil"><?php echo $_SESSION["sesionusuario"] ?></H3></button>
+    </form>
 </header>
 <section id="cuerpoprincipal">
-
+    <div id="paginacionforos"></div>
 </section>
 </body>
 </html>

@@ -7,7 +7,9 @@ if($query->num_rows>0){
     $fila = $query->fetch_assoc();
     session_start();
     $_SESSION["sesionusuario"] = $fila["nombres"].' '.$fila["apellidos"];
+    $_SESSION["idusuario"] = $fila["nombreusuario"];
     header('Location: ../../foro/vistaforo/inicioajedrez/Ajedrez.php');
     die();
 }
+
 header('Location: ../../index.html?error=adfe3');

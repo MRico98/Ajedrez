@@ -16,7 +16,7 @@ textarea{
     padding-left: 10px;
     padding-top: 10px;
     display: inline-block;
-    width: 550px;
+    width: 100px;
     color: black;
 }
 
@@ -26,8 +26,9 @@ textarea{
     transform: translateX(-50%);
     background: darkgrey;
     width: 1270px;
-    height: 80vh;
     padding: 10px 10px 10px 10px;
+    height: 100%;
+    overflow: hidden;
 }
 
 .cuerporegistro {
@@ -41,18 +42,19 @@ textarea{
     width: 400px;
     padding-left: 70px;
 }
-
 .labelinputs{
     margin-top: 20px;
 }
-
 .botonessubmit{
     display: inline-block;
     float: right;
     padding-right: 160px;
     padding-top: 160px;
 }
-
 #formsusuario{
-    display: inline-block;
+    float: right;
+}
+#botonperfil{
+    background-color: unset;
+    border-style: none;
 }
