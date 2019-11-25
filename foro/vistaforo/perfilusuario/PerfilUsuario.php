@@ -1,12 +1,18 @@
 <?php
 include('../../controladorforo/controladorperfil/ControladorPerfil.php');
 session_start();
-if($_SESSION["sesionusuario"] == '' && $_SESSION["sesionusuario"] == null){
+$perfilactual = false;
+$sesiondelusuario = $_SESSION["sesionusuario"];
+$nombredelusuario = $_SESSION["idusuario"];
+if($sesiondelusuario == '' && $sesiondelusuario == null){
     header('Location: ../../../index.html?error=nosession');
     die();
 }
 $controladorperfil = new ControladorPerfil();
-$informacionusuario = $controladorperfil->getInformacion($_GET["idusuario"])->fetch_assoc();
+$informacionusuario = $controladorperfil->getInformacion($nombredelusuario)->fetch_assoc();
+if($informacionusuario["nombreusuario"] === $nombredelusuario){
+    $perfilactual=true;
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -39,7 +45,7 @@ $informacionusuario = $controladorperfil->getInformacion($_GET["idusuario"])->fe
         <img  src="../../imagenes/busquedalupa.png" width="40" height="40">
         <input type="text" class="form-control">
     </form>
-    <form action="../perfilusuario/PerfilUsuario.php" method="post" id="formsusuario">
+    <form action="../perfilusuario/PerfilUsuario.php" method="get" id="formsusuario">
         <button name="idusuario" id="botonperfil" type="submit" value="<?php echo $_SESSION["idusuario"] ?>">
             <H3 id="infoperfil"><?php echo $_SESSION["sesionusuario"] ?></H3>
     </form>
@@ -53,6 +59,31 @@ $informacionusuario = $controladorperfil->getInformacion($_GET["idusuario"])->fe
             </figcaption>
         </figure>
     </aside>
+    <?php if($perfilactual){ ?>
+        <article id="articuloprueba">
+            <p>
+                <a data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+                    <button type="button" class="btn btn-dark">Opciones del perfil</button>
+                </a>
+            </p>
+            <div class="collapse" id="collapseExample">
+                <div class="card card-body">
+                    <button type="button" class="btn btn-secondary btn-block" style="margin-bottom: 10px">Editar perfil</button>
+                    <br><br>
+                    <a href="../../controladorforo/controladorperfil/CierreSesion.php">
+                        <button type="button" class="btn btn-secondary btn-block">Cerrar sesión</button>
+                    </a>
+                </div>
+            </div>
+        </article>
+    <?php }
+        else if($_SESSION["tipoususuario"] == "admin"){ ?>
+            <article id="articuloprueba">
+                <button type="button" class="btn btn-danger">Eliminar perfil</button>
+            </article>
+    <?php
+        }
+    ?>
     <section id="cuerpoprincipal">
         <article id="descripcionusuario">
                <?php echo $informacionusuario["descripcion"]; ?>
@@ -72,7 +103,7 @@ $informacionusuario = $controladorperfil->getInformacion($_GET["idusuario"])->fe
                         <textarea name="descripcion" class="form-control" id="descripcionforo" rows="3"></textarea>
                         <input type="hidden" name="idusuario" value="<?php echo $_SESSION["idusuario"] ?>">
                         <input type="hidden" name="fechapublicacion" value="<?php echo date("Y-m-d") ?>">
-                        <input type="submit" class="btn" value="suss">
+                        <input type="submit" class="btn" value="Enviar">
                     </div>
                 </form>
             </div>

@@ -9,6 +9,7 @@
     height: 300px;
     margin-left: 10px;
     align-content: center;
+    position: relative;
 }
 #cuerpoprincipal{
     float: left;
@@ -106,4 +107,14 @@
 #nombreusuariofoto{
     width: 200px;
     word-wrap: break-word;
+}
+#articuloprueba{
+    margin-top:400px;
+    margin-left: -205px;
+    display: block;
+    width: 180px;
+    float: left;
+}
+.card,.card-body,.collapse{
+    margin-left: -15px;
 }

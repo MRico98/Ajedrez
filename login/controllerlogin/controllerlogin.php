@@ -8,6 +8,7 @@ if($query->num_rows>0){
     session_start();
     $_SESSION["sesionusuario"] = $fila["nombres"].' '.$fila["apellidos"];
     $_SESSION["idusuario"] = $fila["nombreusuario"];
+    $_SESSION["tipousuario"] = $fila["tipousuario"];
     header('Location: ../../foro/vistaforo/inicioajedrez/Ajedrez.php');
     die();
 }
