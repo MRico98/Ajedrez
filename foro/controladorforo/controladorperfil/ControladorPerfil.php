@@ -15,4 +15,8 @@ class ControladorPerfil
         return $this->modelo->getAll($id);
     }
 
+    public function numForos($id){
+        return $this->modelo->getNumberForos($id);
+    }
+
 }

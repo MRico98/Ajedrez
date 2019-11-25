@@ -21,5 +21,5 @@ try{
     header('location: ../vistaregistro/registrousuario.php?registro=exito&e='.$_POST["tipousuario"].'');
 }catch (Exception $e){
     $mensaje = $e->getMessage();
-        header('location: ../vistaregistro/registrousuario.php?registro=fracaso&mensaje='.$mensaje.'&e='.$_POST["tipousuario"].'');
+        header('location: ../vistaregistro/EdicionInformacionUsuario.php?registro=fracaso&mensaje='.$mensaje.'&e='.$_POST["tipousuario"].'');
 }

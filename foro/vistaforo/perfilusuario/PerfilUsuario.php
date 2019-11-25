@@ -13,6 +13,10 @@ $informacionusuario = $controladorperfil->getInformacion($nombredelusuario)->fet
 if($informacionusuario["nombreusuario"] === $nombredelusuario){
     $perfilactual=true;
 }
+$numeroforos = $controladorperfil->numForos($nombredelusuario)->fetch_array()[0];
+if($numeroforos==null){
+    $numeroforos=0;
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -68,7 +72,9 @@ if($informacionusuario["nombreusuario"] === $nombredelusuario){
             </p>
             <div class="collapse" id="collapseExample">
                 <div class="card card-body">
-                    <button type="button" class="btn btn-secondary btn-block" style="margin-bottom: 10px">Editar perfil</button>
+                    <a href="../edicionusuario/EdicionInformacionUsuario.php">
+                        <button type="button" class="btn btn-secondary btn-block" style="margin-bottom: 10px">Editar perfil</button>
+                    </a>
                     <br><br>
                     <a href="../../controladorforo/controladorperfil/CierreSesion.php">
                         <button type="button" class="btn btn-secondary btn-block">Cerrar sesión</button>
@@ -103,6 +109,7 @@ if($informacionusuario["nombreusuario"] === $nombredelusuario){
                         <textarea name="descripcion" class="form-control" id="descripcionforo" rows="3"></textarea>
                         <input type="hidden" name="idusuario" value="<?php echo $_SESSION["idusuario"] ?>">
                         <input type="hidden" name="fechapublicacion" value="<?php echo date("Y-m-d") ?>">
+                        <input type="hidden" name="numeroforo" value="<?php echo $numeroforos ?>">
                         <input type="submit" class="btn" value="Enviar">
                     </div>
                 </form>
