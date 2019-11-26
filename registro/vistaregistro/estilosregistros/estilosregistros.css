@@ -24,7 +24,7 @@ textarea{
     width: 1270px;
     padding: 10px 10px 10px 10px;
     height: 100%;
-    overflow: hidden;
+    overflow: auto;
 }
 .cuerporegistro {
     display: inline-block;

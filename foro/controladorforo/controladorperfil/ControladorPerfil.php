@@ -19,4 +19,12 @@ class ControladorPerfil
         return $this->modelo->getNumberForos($id);
     }
 
+    public function infoForos($id){
+        return $this->modelo->getInfoForos($id);
+    }
+
+    public function inforForosPaginacion($id,$inicio,$fin){
+        return $this->modelo->getPaginacionElements($id,$inicio,$fin);
+    }
+
 }

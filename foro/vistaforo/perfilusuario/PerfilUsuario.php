@@ -9,14 +9,16 @@ if($sesiondelusuario == '' && $sesiondelusuario == null){
     die();
 }
 $controladorperfil = new ControladorPerfil();
-$informacionusuario = $controladorperfil->getInformacion($nombredelusuario)->fetch_assoc();
+$informacionusuario = $controladorperfil->getInformacion($_GET["idusuario"])->fetch_assoc();
 if($informacionusuario["nombreusuario"] === $nombredelusuario){
     $perfilactual=true;
 }
-$numeroforos = $controladorperfil->numForos($nombredelusuario)->fetch_array()[0];
+$numerodeforos = $controladorperfil->numForos($_GET["idusuario"]);
+$numeroforos = $numerodeforos->fetch_array()[0];
 if($numeroforos==null){
     $numeroforos=0;
 }
+$articuloporpagina = 3;
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -38,6 +40,17 @@ if($numeroforos==null){
     <link rel="stylesheet" type="text/css" href="../inicioajedrez/estilosinicio/EstilosInicio.css">
 </head>
 <body id="cuerpoperfil">
+<?php
+
+if(!isset($_GET["pagina"])){
+    header('Location:PerfilUsuario.php?idusuario='.$_GET["idusuario"].'&pagina=1');
+}
+
+$inicio =($_GET["pagina"]-1)*$articuloporpagina;
+$arrayforos = $controladorperfil->inforForosPaginacion($_GET["idusuario"],$inicio,$articuloporpagina);
+$inforforos = $arrayforos->fetch_all();
+$paginas = ceil($numerodeforos->num_rows/3);
+?>
 <header class="container-fluid" id="cabeceraprincipal">
     <a href="../inicioajedrez/Ajedrez.php">
         <picture>
@@ -57,7 +70,7 @@ if($numeroforos==null){
 <div id="cuerpoperfil">
     <aside id="bloquefotoperfil">
         <figure id="imagendeperfil" >
-            <img class="rounded float-left" src="../../../imagenesperfil/iconoestandarlogin.jpg" alt="imagen icono" width="200" height="200">
+            <img class="rounded float-left" src="../../imagenes/<?php echo $informacionusuario["fotoperfil"] ?>" alt="imagen icono" width="200" height="200">
             <figcaption id="nombreusuariofoto">
                 <h2 id="infoperfilusuario"><?php echo $informacionusuario["nombres"] ?> <?php echo $informacionusuario["apellidos"] ?></h2>
             </figcaption>
@@ -83,7 +96,7 @@ if($numeroforos==null){
             </div>
         </article>
     <?php }
-        else if($_SESSION["tipoususuario"] == "admin"){ ?>
+        else if($_SESSION["tipousuario"] == "admin"){ ?>
             <article id="articuloprueba">
                 <button type="button" class="btn btn-danger">Eliminar perfil</button>
             </article>
@@ -94,6 +107,7 @@ if($numeroforos==null){
         <article id="descripcionusuario">
                <?php echo $informacionusuario["descripcion"]; ?>
         </article>
+        <?php if($perfilactual){ ?>
         <button type="button" class="btn btn-secondary btn-lg btn-block" id="botoncrearforo">Crear foro</button>
         <article class="modal">
             <div class="contenidomodal">
@@ -115,8 +129,29 @@ if($numeroforos==null){
                 </form>
             </div>
         </article>
-        <article id="paginacionforos"></article>
-        <article id="paginacioncomentarios"></article>
+        <?php } ?>
+        <br><br>
+        <h2>Foros creados</h2>
+        <article id="paginacionforos">
+            <?php  foreach ($inforforos as $informacion){ ?>
+                <a href="../paginaforo/Discusion.php?numforo=<?php echo $informacion[1] ?>&nombreusuario=<?php echo $informacion[0] ?>">
+                    <div class="alert alert-dark" role="alert">
+                        <?php echo $informacion[2] ?><br>
+                        <small id="emailHelp" class="form-text text-muted"><?php echo $informacion[4] ?></small>
+                    </div>
+                </a>
+            <?php } ?>
+            <nav aria-label="Page navigation example" class="paginacion">
+                <ul class="pagination">
+                    <li class="page-item <?php echo $_GET["pagina"]<=1? 'disabled':'' ?>"><a class="page-link" href="PerfilUsuario.php?idusuario=<?php echo $_GET["idusuario"] ?>&pagina=<?php echo $_GET["pagina"]-1 ?>"> Anterior</a></li>
+                    <?php for($contador=0;$contador<$paginas;$contador++){ ?>
+                    <li class="page-item <?php echo $_GET["pagina"]==$contador+1? 'active':'' ?>"><a class="page-link" href="PerfilUsuario.php?idusuario=<?php echo $_GET["idusuario"] ?>&pagina=<?php echo $contador+1 ?>"><?php echo $contador+1 ?></a></li>
+                    <?php }?>
+                    <li class="page-item <?php echo $_GET["pagina"]>=$paginas? 'disabled':'' ?>"><a class="page-link" href="PerfilUsuario.php?idusuario=<?php echo $_GET["idusuario"] ?>&pagina=<?php echo $_GET["pagina"]+1 ?>">Siguiente</a></li>
+                </ul>
+            </nav>
+        </article>
+        <br><br><br>
     </section>
     <aside id = "bloqueinformacion">
         <table class="table table-striped">

@@ -16,6 +16,7 @@
     display: block;
     left: 28.5%;
     width: 875px;
+    height: 600px;
 }
 #imagendeperfil{
     display: inline-block;
@@ -74,13 +75,14 @@
     margin-top: 20px;
 }
 #paginacionforos{
+    text-align: center;
+    display: block;
     margin-top: 25px;
-    height: 200px;
-    background-color: red;
+    margin-bottom: 90px;
 }
 #paginacioncomentarios{
     margin-top: 25px;
-    height: 200px;
+    height: 250px;
     background-color: red;
 }
 #formsusuario{
@@ -117,4 +119,7 @@
 }
 .card,.card-body,.collapse{
     margin-left: -15px;
+}
+.paginacion{
+    display: inline-block;
 }

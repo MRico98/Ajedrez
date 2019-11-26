@@ -1,0 +1,48 @@
+#contenidocentral{
+    padding-top: 40px;
+    margin: auto;
+    display: block;
+    height: 100%;
+    width: 90%;
+}
+#contenidocentralforo{
+    display: inline;
+}
+#informacionespecificaforo{
+    background-color: darkslategrey;
+    text-align: center;
+    border-style: solid;
+    border-radius: 20px;
+    margin-top: -15px;
+    margin-left: 20px;
+    display: block;
+}
+#titulodiscusion{
+    border-radius: 0 0 20px 0;
+    background-color: beige;
+    display: block;
+    width: 1150px;
+    padding-left: 10px;
+    margin-left: 200px;
+    word-wrap: break-word;
+}
+#seccioncomentarios{
+    margin: 100px auto auto auto;
+    width: 1300px;
+    border-radius: 30px;
+}
+
+a{
+    background-color: darkgrey;
+    color: black;
+}
+
+#infoperfilusuario{
+    background-color: darkgrey;
+    border-style: solid;
+    border-radius: 20px;
+}
+.top-buffer { margin-top:20px; }
+#tablacomentarios{
+    border-radius: 30px;
+}
