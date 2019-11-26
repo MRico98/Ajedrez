@@ -61,11 +61,6 @@ $informacionusuario = $controlador->getInfo($_SESSION["idusuario"])->fetch_assoc
             <input name="celular" type="number" class="form-control" id="celular" value="<?php echo $informacionusuario["celular"]?>">
         </article>
         <article class="form-group detallesusuario">
-            <picture>
-                <img src="../../../indexcomplements/ima/iconoestandarlogin.jpg" width="96" sizes="100" alt="Imagen de usuario">
-            </picture>
-            <label class="labelinputs" for="imagenperfil">Seleccione una imagen de perfil</label>
-            <input name="imagenperfil" type="file" id="imagenperfil" accept="image/png,image/jpg">
             <label class="labelinputs" for="contrasenia">Contraseña:</label>
             <input name="contrasenia" type="password" class="form-control" id="contrasenia" required>
             <label class="labelinputs" for="repetircontrasenia">Repita al contraseña</label>

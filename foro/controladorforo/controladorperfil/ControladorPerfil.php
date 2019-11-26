@@ -27,4 +27,9 @@ class ControladorPerfil
         return $this->modelo->getPaginacionElements($id,$inicio,$fin);
     }
 
+    public function eliminarUsuario($id){
+        return $this->modelo->eliminarUsuario($id);
+        header("Location: ../../vistaforo/inicioajedrez/Ajedrez.php");
+    }
+
 }

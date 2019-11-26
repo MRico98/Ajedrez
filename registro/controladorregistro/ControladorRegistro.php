@@ -12,7 +12,28 @@ try{
     $conexion->setSexoUsario($_POST["sexo"]);
     $conexion->setEmailUsuario($_POST["email"]);
     $conexion->setCelularUsuario($_POST["celular"]);
-    $conexion->setImagenUsuario("ruta");
+
+    $image = $_POST["imagenperfil"];
+
+    //Stores the filename as it was on the client computer.
+    $imagename = $_FILES["imagenperfil"]["name"];
+    //Stores the filetype e.g image/jpeg
+    $imagetype = $_FILES["imagenperfil"]["type"];
+    //Stores any error codes from the upload.
+    $imageerror = $_FILES["imagenperfil"]["error"];
+    //Stores the tempname as it is given by the host when uploaded.
+    $imagetemp = $_FILES["imagenperfil"]["tmp_name"];
+
+    $imagePath = "../../foro/imagenes/";
+
+    if(move_uploaded_file($imagetemp, $imagePath . $imagename)) {
+        echo "Sussecfully uploaded your image.";
+    }
+    else {
+        echo "Failed to move your image.";
+    }
+
+    $conexion->setImagenUsuario($imagename);
     $conexion->setNickname($_POST["nombreusuario"]);
     $conexion->setContraseniaUsuario($_POST["contrasenia"],$_POST["repetircontrasenia"]);
     $conexion->setDescripcionUsuario($_POST["descripcionusuario"]);

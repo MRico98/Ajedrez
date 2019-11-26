@@ -22,4 +22,8 @@ class ControladorDiscusion {
         return $this->modelo->getInfoUsuario($idusuario);
     }
 
+    public function getInforComentarios($autorcomentario,$numeroforo){
+        return $this->modelo->getInfoComentarios($autorcomentario,$numeroforo);
+    }
+
 }

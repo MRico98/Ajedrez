@@ -12,9 +12,10 @@
     <script src="../../node_modules/popper.js/dist/popper.min.js"></script>
     <script src="../../node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
     <link href="estilosregistros/estilosregistros.css" rel="stylesheet">
+    <link href="estilosregistros/EstilosAuxiliar.css" rel="stylesheet">
 </head>
 <body>
-<form id="formregistro" action="../controladorregistro/ControladorRegistro.php" method="post">
+<form id="formregistro" action="../controladorregistro/ControladorRegistro.php" method="post" enctype="multipart/form-data">
     <header class="container-fluid" id="cabeceraprincipal">
             <picture>
                 <img class="rounded float-left" src="../../indexcomplements/ima/icono.jpg" alt="imagen icono" width="100" height="100">
@@ -74,7 +75,9 @@
                 <img src="../../indexcomplements/ima/iconoestandarlogin.jpg" width="96" sizes="100" alt="Imagen de usuario">
             </picture>
             <label class="labelinputs" for="imagenperfil">Seleccione una imagen de perfil</label>
-            <input name="imagenperfil" type="file" id="imagenperfil" accept="image/png,image/jpg">
+
+            <input name="imagenperfil" type="file" id="imagenperfil">
+
             <label class="labelinputs" for="nombreusuario">Nombre de usuario:</label>
             <input name="nombreusuario" type="text" class="form-control" id="nombreusuario" required>
             <label class="labelinputs" for="contrasenia">Contraseña:</label>

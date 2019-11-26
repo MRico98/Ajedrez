@@ -98,7 +98,11 @@ $paginas = ceil($numerodeforos->num_rows/3);
     <?php }
         else if($_SESSION["tipousuario"] == "admin"){ ?>
             <article id="articuloprueba">
-                <button type="button" class="btn btn-danger">Eliminar perfil</button>
+                <form action="EliminarCuenta.php" method="post">
+                    <input type="submit" class="btn btn-danger" value="Eliminar perfil">
+                    <input name="nombre" type="hidden" value="<?php echo $informacionusuario["nombres"] ?> <?php echo $informacionusuario["apellidos"] ?>">
+                    <input name="usuario" type="hidden" value="<?php echo $informacionusuario["nombreusuario"] ?>">
+                </form>
             </article>
     <?php
         }

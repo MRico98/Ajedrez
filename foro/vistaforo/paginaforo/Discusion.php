@@ -10,6 +10,8 @@ if($sesiondelusuario == '' && $sesiondelusuario == null){
 $controlador = new ControladorDiscusion();
 $informacionforo = $controlador->getInfoForo($_GET["numforo"],$_GET["nombreusuario"])->fetch_assoc();
 $informacionautor = $controlador->getInfoUsuario($_GET["nombreusuario"])->fetch_assoc();
+$informacioncomentarios = $controlador->getInforComentarios($_GET['nombreusuario'],$_GET["numforo"]);
+$numerocomentarios = $informacioncomentarios->num_rows;
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -65,28 +67,34 @@ $informacionautor = $controlador->getInfoUsuario($_GET["nombreusuario"])->fetch_
     </div>
 </div>
 <div id="seccioncomentarios">
-    <table class="table table-striped table-light" id="tablacomentarios">
-        <tbody>
-        <tr>
-            <th scope="row" >1</th>
-            <td>Mark</td>
-            <td>Otto</td>
-            <td>@mdodsfsdfsdfsdfds</td>
-        </tr>
-        <tr>
-            <th scope="row">2</th>
-            <td>Jacob</td>
-            <td>Thornton</td>
-            <td>@fat</td>
-        </tr>
-        <tr>
-            <th scope="row">3</th>
-            <td>Larry</td>
-            <td>the Bird</td>
-            <td>@twitter</td>
-        </tr>
-        </tbody>
-    </table>
+    <?php if($numerocomentarios != 0){ ?>
+        <table class="table table-striped table-light" id="tablacomentarios">
+            <?php while($fila = $informacioncomentarios->fetch_assoc()){ ?>
+            <tbody>
+                <tr>
+                    <th scope="row" ><?php echo $fila["numcomentario"] ?></th>
+                    <td><?php echo $fila["autorcomentario"] ?></td>
+                    <td><?php echo $fila["comentario"] ?></td>
+                </tr>
+            </tbody>
+        <?php } ?>
+        </table>
+    <?php } ?>
+    <form action="../../controladorforo/controladordiscusion/ControladorDiscusionRegistro.php" method="post">
+        <div class="form-group" id="areatextocomentarios">
+            <label for="exampleFormControlTextarea1"><strong class="display-4">Escriba un comentario de este foro</strong></label>
+            <br>
+            <textarea name="comentario" class="form-control" id="areacomentario" rows="3"></textarea>
+            <input name="autorcomentario" type="hidden" value="<?php echo $nombredelusuario ?>">
+            <input name="numcomentario" type="hidden" value="<?php echo $numerocomentarios+1 ?>">
+            <input name="autorforo" type="hidden" value="<?php echo $_GET["nombreusuario"] ?>">
+            <input name="numeroforo" type="hidden" value="<?php echo $_GET["numforo"] ?>">
+            <input name="fechacomentario" type="hidden" value="<?php echo date("Y-m-d") ?>">
+            <br>
+            <br>
+            <button type="submit" class="btn-lg btn-dark">Comentar</button>
+        </div>
+    </form>
 </div>
 </body>
 </html>

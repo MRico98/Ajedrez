@@ -46,3 +46,10 @@ a{
 #tablacomentarios{
     border-radius: 30px;
 }
+#areacomentario{
+    width: 500px;
+}
+#areatextocomentarios{
+    text-align: center;
+    padding-top: 25px;
+}

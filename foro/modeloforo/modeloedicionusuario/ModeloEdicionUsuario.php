@@ -8,7 +8,6 @@ class ModeloEdicionUsuario extends ConexionDatabase
     private $descripcion;
     private $celular;
     private $nuevacontrasenia;
-    private $fotoperfil;
     private $nombres;
     private $apellidos;
     private $nacionalidad;
@@ -21,20 +20,19 @@ class ModeloEdicionUsuario extends ConexionDatabase
      * @param $descripcion
      * @param $celular
      * @param $nuevacontrasenia
-     * @param $fotoperfil
      * @param $nombres
      * @param $apellidos
      * @param $nacionalidad
      * @param $sexo
      * @throws Exception
      */
-    public function __construct($nombreusuarioactual, $descripcion, $celular, $nuevacontrasenia,$contraseniarepe, $fotoperfil, $nombres, $apellidos, $nacionalidad, $sexo)
+    public function __construct($nombreusuarioactual, $descripcion, $celular, $nuevacontrasenia,$contraseniarepe, $nombres, $apellidos, $nacionalidad, $sexo)
     {
+        parent::__construct();
         $this->nombreusuarioactual = $nombreusuarioactual;
         $this->descripcion = $descripcion;
         $this->celular = $celular;
         $this->nuevacontrasenia = $nuevacontrasenia;
-        $this->fotoperfil = $fotoperfil;
         $this->nombres = $nombres;
         $this->apellidos = $apellidos;
         $this->nacionalidad = $nacionalidad;
@@ -49,9 +47,8 @@ class ModeloEdicionUsuario extends ConexionDatabase
         }
     }
 
-    public function edicionUsuario(){
-        $operacion = 'UPDATE ajedrez.usuario SET descripcion = "'.$this->descripcion.'", celular = "'.$this->celular.'", contrasenia = "'.$this->nuevacontrasenia.'", fotoperfil = "ruta", nombres = "'.$this->nombres.'", apellidos = "'.$this->apellidos.'", nacionalidad = "'.$this->nacionalidad.'", sexo = "'.$this->sexo.'" WHERE (nombreusuario LIKE "'.$this->nombreusuarioactual.'");';
-        echo $operacion;
+    public function edicionUsuario($nombreusuarioactual, $descripcion, $celular, $nuevacontrasenia,$contraseniarepe, $nombres, $apellidos, $nacionalidad, $sexo){
+        $operacion = 'UPDATE ajedrez.usuario SET descripcion = "'.$descripcion.'", celular = "'.$celular.'", contrasenia = "'.$nuevacontrasenia.'", nombres = "'.$nombres.'", apellidos = "'.$apellidos.'", nacionalidad = "'.$nacionalidad.'", sexo = "'.$sexo.'" WHERE (nombreusuario LIKE "'.$nombreusuarioactual.'");';
         $this->hacerQuery($operacion);
     }
 }

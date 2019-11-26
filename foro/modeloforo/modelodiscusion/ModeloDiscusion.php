@@ -15,4 +15,14 @@ class ModeloDiscusion extends ConexionDatabase
         return $this->hacerQuery($peticion);
     }
 
+    public function registrarComentario($autor,$numerocomentario,$autorforo,$numeroforo,$comentario,$fecha){
+        $peticion = 'INSERT INTO ajedrez.comentarios (autorcomentario, numcomentario, autorforo,numeroforo,comentario,fechacomentario) VALUES ("'.$autor.'",'.$numerocomentario.',"'.$autorforo.'",'.$numeroforo.',"'.$comentario.'","'.$fecha.'");';
+        $this->hacerQuery($peticion);
+    }
+
+    public function getInfoComentarios($autorforo,$numeroforo){
+        $peticion = 'SELECT * FROM ajedrez.comentarios WHERE autorforo LIKE "'.$autorforo.'" AND numeroforo = '.$numeroforo.' ORDER BY fechacomentario ASC; ';
+        return $this->hacerQuery($peticion);
+    }
+
 }

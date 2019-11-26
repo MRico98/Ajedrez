@@ -24,4 +24,9 @@ class ModeloPerfil extends ConexionDatabase
         return $this->hacerQuery($peticion);
     }
 
+    public function eliminarUsuario($id){
+        $peticion = 'DELETE FROM ajedrez.usuario WHERE nombreusuario LIKE "'.$id.'";';
+        return $this->hacerQuery($peticion);
+    }
+
 }
